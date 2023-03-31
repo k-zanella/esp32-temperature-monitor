@@ -18,6 +18,8 @@
 
 #define DHT_PIN 26
 
+#define SEND_DATA_DELAY 60000  // 60 seconds
+
 DHT dht(DHT_PIN, DHT11);
 BlynkTimer timer;
 
@@ -71,7 +73,7 @@ void setup() {
     dht.begin();
 
     Blynk.config(BLYNK_AUTH_TOKEN);
-    timer.setInterval(2000L, send_data);
+    timer.setInterval(SEND_DATA_DELAY, send_data);
 }
 
 void loop() {
